@@ -396,6 +396,27 @@ public class Bank {
 		});
 	}
 
+
+	private void depositAllExcept(final int... ids) {
+        final WidgetChild inv = Widgets.get(679, 0);
+        for (int i = 0; i < 28; i++) {
+            final WidgetChild spot = inv.getChild(i);
+            if (spot != null && checkID(spot.getChildId(), true, ids)) {
+                Bank.deposit(spot.getChildId(), 0);
+            }
+        }
+    }
+
+    private boolean checkID(final int id, boolean skip, final int... ids) {
+        for (int curID : ids) {
+            if (curID == id) {
+                return !skip;
+            }
+        }
+        return skip;
+    }	
+
+
 	public static Item getItem(final Filter<Item> itemFilter) {
 		for (final Item item : getItems()) {
 			if (item != null && itemFilter.accept(item)) {
