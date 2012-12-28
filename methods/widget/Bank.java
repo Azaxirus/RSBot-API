@@ -457,6 +457,10 @@ public class Bank {
 	public static boolean isSearchEnabled() {
 		return getCurrentTab() == Tab.SEARCH;
 	}
+	
+	public static boolean isEmpty() {
+        return Inventory.getCount() == 0;
+    	}
 
 	public static boolean setSearchMode(final boolean enable) {
 		if (!isOpen()) {
