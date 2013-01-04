@@ -273,6 +273,11 @@ public class Bank {
 		}
 		return Inventory.getCount(true) != invCount;
 	}
+	
+	public static boolean withdrawAllButOneOf(final int id) {
+		withdraw(id, getItem(id).getStackSize() - 1);
+		return isOpen();
+	}
 
 	public static boolean deposit(final int id, final Amount amount) {
 		return deposit(id, amount.getValue());
